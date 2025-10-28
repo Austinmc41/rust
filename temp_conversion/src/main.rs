@@ -32,7 +32,7 @@ fn main(){
             .read_line(&mut input_unit)
             .expect("Failed to read line");
 
-        let mut unit: TemperatureUnit = match input_unit.trim().parse() {
+        let unit: TemperatureUnit = match input_unit.trim().parse() {
             Ok(TemperatureUnit::Celsius) => TemperatureUnit::Celsius,
             Ok(TemperatureUnit::Fahrenheit) => TemperatureUnit::Fahrenheit,
             Err(_) => {
@@ -57,7 +57,7 @@ fn main(){
             .expect("Failed to read line");
 
 
-        let mut temp: f64 = match input_temp.trim().parse() {
+        let temp: f64 = match input_temp.trim().parse() {
             Ok(num) => num,
             Err(_) =>  {
                 println!("Please type a goddamn number!");
@@ -65,7 +65,7 @@ fn main(){
             },
         };
 
-        let mut converted_temp = convert_temp(temp, &unit);
+        let converted_temp = convert_temp(temp, &unit);
 
         match unit {
             TemperatureUnit::Celsius => {
