@@ -1,5 +1,6 @@
 fn main() {
-    let mut v = vec![1, 2, 3];
-    let n = &v[0];
-    v.push(4)
+    let mut v: Vec<Option<i8>> = vec![None];
+    v.push(Some(1));
+    print!("{}", v.pop())
+
 }
