@@ -33,20 +33,17 @@ impl Config {
             return Err("Too many arguments");
         }
 
-        // if cmd args provided == 4 then we want to take the ignore_case boolean provided
-        // and make it take precedence over any environment variable
+
         if args.len() == 3 {
             let query = args[1].clone();
             let file_path = args[2].clone();
-            // Case 3: ignore_case is set via environment variable
             let ignore_case = env::var("IGNORE_CASE").is_ok();
 
             Ok(Config { query, file_path, ignore_case })
 
-        } else { // Implicitly, args.len() must be 4 due to the checks above
+        } else {
             let query = args[1].clone();
             let file_path = args[2].clone();
-            // Case 4: ignore_case is set via cmd line arg, which takes precedence
             let ignore_case = args[3].clone().parse::<bool>().is_ok();
 
             Ok(Config { query, file_path, ignore_case })
